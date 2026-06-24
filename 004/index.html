@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cafeteria Local — Sabores &amp; Conforto</title>
+  <meta name="description" content="Conheça a Cafeteria Local: cardápio, valores, ambiente e novidades." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --bg0:#0b0f14;
+      --bg1:#111826;
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.10);
+      --text:#e9edf3;
+      --muted: rgba(233,237,243,.75);
+      --brand:#d2a25a; /* caramelo */
+      --brand2:#ffcf7a;
+      --line: rgba(255,255,255,.12);
+      --ok:#31d0aa;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(210,162,90,.35), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(255,207,122,.18), transparent 50%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* Fundo com “textura” suave */
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.07;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    a{ color: inherit; text-decoration:none; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+
+    /* Navbar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:38px;height:38px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, var(--brand2), var(--brand) 55%, rgba(210,162,90,.35));
+      box-shadow: 0 10px 30px rgba(210,162,90,.25);
+      display:grid;place-items:center;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .logo svg{ width:20px;height:20px; }
+
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    nav a{
+      padding:10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: .2s ease;
+      font-weight:600;
+      font-size: 14px;
+    }
+    nav a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+    /* Estado ativo (adiciona via JS no scroll) */
+    nav a.active{ color: var(--text); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); }
+
+    .cta{
+      padding:10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(210,162,90,.95), rgba(255,207,122,.95));
+      color: #1a1208;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 14px 35px rgba(210,162,90,.25);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 48px 0 26px;
+      position:relative;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      nav ul{ gap:10px; }
+    }
+
+    .hero-card{
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-left{
+      padding: 28px 26px;
+      min-height: 420px;
+    }
+
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 14px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 9px 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--brand2), var(--brand));
+      box-shadow: 0 8px 18px rgba(210,162,90,.25);
+    }
+
+    .hero h1{
+      margin: 6px 0 10px;
+      font-family: Playfair Display, Georgia, serif;
+      font-size: clamp(30px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.6;
+      max-width: 58ch;
+    }
+
+    .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 700;
+      transition: .18s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(210,162,90,.95), rgba(255,207,122,.95));
+      color:#1a1208;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    /* Imagens (sem arquivo local) */
+    .hero-right{
+      display:flex;
+      flex-direction:column;
+      min-height: 420px;
+      padding: 18px;
+      gap: 12px;
+    }
+
+    .image-stack{
+      position:relative;
+      flex:1;
+      border-radius: 24px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .image-stack::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(500px 250px at 30% 20%, rgba(255,207,122,.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+      z-index:2;
+    }
+
+    .stack-img1,.stack-img2{
+      position:absolute;
+      inset:0;
+      width:100%; height:100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .stack-img2{
+      inset:auto -10% -10% auto;
+      width: 62%; height: 62%;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+      transform: rotate(4deg);
+      z-index:3;
+      opacity: .98;
+    }
+
+    .stack-badge{
+      position:absolute;
+      left: 14px; bottom: 14px;
+      z-index:4;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+    }
+    .stack-badge strong{ font-size: 14px; }
+    .stack-badge span{ color: var(--muted); font-size: 13px; display:block; margin-top:2px; }
+
+    /* Seções */
+    section{ padding: 26px 0; }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom: 16px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: Playfair Display, Georgia, serif;
+      font-size: 26px;
+      letter-spacing:.2px;
+    }
+    .section-title p{ margin:0; color: var(--muted); font-weight:600; }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px){ .grid-3{ grid-template-columns:1fr; } }
+
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 16px;
+      box-shadow: 0 14px 35px rgba(0,0,0,.22);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(400px 180px at 10% 0%, rgba(210,162,90,.20), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
+
+    .card h3{ margin: 10px 0 6px; font-size: 16px; }
+    .card p{ margin:0; color: var(--muted); line-height:1.55; font-size: 14.5px; }
+
+    /* Cardápio */
+    .menu-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 900px){ .menu-wrap{ grid-template-columns:1fr; } }
+
+    .menu-table{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .menu-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .menu-item strong{ display:block; font-size: 14.5px; }
+    .menu-item span{ display:block; color: var(--muted); font-size: 13px; margin-top: 4px; line-height:1.4; }
+    .price{
+      font-weight: 900;
+      color: var(--brand2);
+      white-space: nowrap;
+    }
+
+    /* Banner */
+    .banner{
+      border-radius: var(--radius2);
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(210,162,90,.18), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .banner::before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,207,122,.35), rgba(210,162,90,.18) 55%, transparent 70%);
+      transform: rotate(15deg);
+      pointer-events:none;
+    }
+
+    .banner-inner{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .banner h3{ margin:0; font-family: Playfair Display, Georgia, serif; font-size: 22px; }
+    .banner p{ margin: 6px 0 0; color: var(--muted); font-weight:600; line-height:1.5; }
+
+    /* Rodapé */
+    footer{
+      padding: 28px 0 42px;
+      color: var(--muted);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items:start;
+    }
+    @media (max-width: 900px){ .footer-grid{ grid-template-columns:1fr; } }
+
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    @media (max-width: 560px){ .contact{ grid-template-columns:1fr; } }
+    .contact .field{
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .field strong{ color: var(--text); font-size: 14px; }
+    .field span{ display:block; margin-top: 4px; color: var(--muted); font-weight:600; }
+
+    .map-img{
+      height: 210px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      position:relative;
+    }
+    .map-img img{ width:100%; height:100%; object-fit:cover; filter: saturate(1.05) contrast(1.05); }
+    .map-img::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+
+    .credits{ margin-top: 16px; font-size: 13px; }
+    .hr{ height:1px; background: rgba(255,255,255,.10); margin: 18px 0 0; }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Cafeteria Local">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 7h10v7a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V7Z" stroke="#1a1208" stroke-width="2"/>
+            <path d="M17 10h1.5a3 3 0 0 1 0 6H17" stroke="#1a1208" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 4c0 1.6 1 2.2 1 3" stroke="#1a1208" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 4c0 1.6 1 2.2 1 3" stroke="#1a1208" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          Cafeteria <span style="color:var(--brand2)">Local</span>
+          <div style="font-size:12px; color:var(--muted); font-weight:700; margin-top:2px;">Sabores artesanais &amp; acolhimento</div>
+        </div>
+      </div>
+
+      <nav aria-label="Menu">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#local">Local</a></li>
+          <li><a class="cta" href="#contato">Faça seu pedido</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card hero-left">
+          <div class="pill-row">
+            <div class="pill"><span class="dot"></span> Torra média • aroma marcante</div>
+            <div class="pill"><span class="dot"></span> Opções veganas &amp; sem lactose</div>
+            <div class="pill"><span class="dot"></span> Pães artesanais todos os dias</div>
+          </div>
+
+          <h1>Um café quentinho para cada momento.</h1>
+          <p>
+            Bem-vindo à Cafeteria Local! Um espaço pensado para relaxar: atendimento atencioso,
+            ingredientes selecionados e receitas autorais — do espresso ao doce da casa.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#cardapio">
+              <span aria-hidden="true">☕</span> Ver cardápio
+            </a>
+            <a class="btn" href="#valores">
+              <span aria-hidden="true">✨</span> Promoções &amp; valores
+            </a>
+          </div>
+
+          <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+            <div class="pill" title="Satisfação dos clientes">★★★★★ <span style="color:var(--brand2);">4,9</span> avaliação</div>
+            <div class="pill" title="Horário">⏰ Todos os dias, 08h–19h</div>
+          </div>
+        </div>
+
+        <div class="hero-card hero-right" aria-label="Imagens da cafeteria">
+          <div class="image-stack">
+            <!-- Imagem 1 (café) -->
+            <img
+              class="stack-img1"
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
+              alt="Xícara de café com textura e vapor" />
+            <!-- Imagem 2 (ambiente) -->
+            <img
+              class="stack-img2"
+              src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80"
+              alt="Ambiente aconchegante de cafeteria" />
+
+            <div class="stack-badge">
+              <div aria-hidden="true" style="width:36px;height:36px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;">🧁</div>
+              <div>
+                <strong>Doce da casa</strong>
+                <span>feito diariamente • variedade a cada semana</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:14px; border-radius:18px; margin-top:2px;">
+            <h3 style="margin:0; font-size:15px;">Hoje em destaque</h3>
+            <p style="margin-top:8px;">
+              <span style="color:var(--brand2); font-weight:900;">Cappuccino</span> com canela e espuma cremosa.
+              <br/>Aproveite e peça junto um pão de queijo quentinho!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sobre a cafeteria</h2>
+          <p>O cuidado está em cada detalhe</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">🌿</div>
+            <h3>Ingredientes selecionados</h3>
+            <p>Produtos frescos, receitas autorais e opções especiais para diferentes preferências.</p>
+          </div>
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">🫶</div>
+            <h3>Ambiente acolhedor</h3>
+            <p>Um espaço confortável para conversar, estudar ou apenas apreciar o seu café com calma.</p>
+          </div>
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">🔥</div>
+            <h3>Torra e preparo</h3>
+            <p>Preparo na hora e torra para realçar aroma e sabor. Tudo para uma experiência gostosa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cardapio">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cardápio</h2>
+          <p>Cafés • bebidas • acompanhamentos</p>
+        </div>
+
+        <div class="menu-wrap">
+          <div class="card">
+            <h3 style="margin-top:0; margin-bottom:10px;">Bebidas quentes</h3>
+            <div class="menu-table" role="list">
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Espresso</strong>
+                  <span>Curto, encorpado, 100% na xícara.</span>
+                </div>
+                <div class="price">R$ 7,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Americano</strong>
+                  <span>Equilíbrio perfeito entre força e leveza.</span>
+                </div>
+                <div class="price">R$ 9,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Cappuccino</strong>
+                  <span>Espuma cremosa com canela (opcional).</span>
+                </div>
+                <div class="price">R$ 12,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Chocolate quente</strong>
+                  <span>Cremoso, com opção de chantilly.</span>
+                </div>
+                <div class="price">R$ 14,00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0; margin-bottom:10px;">Doces &amp; acompanhamentos</h3>
+            <div class="menu-table" role="list">
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Pão de queijo</strong>
+                  <span>Assado na hora, porção com 6 unidades.</span>
+                </div>
+                <div class="price">R$ 18,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Torta de frutas</strong>
+                  <span>Recheio cremoso e base amanteigada.</span>
+                </div>
+                <div class="price">R$ 16,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Brownie com calda</strong>
+                  <span>Quentinho por fora e macio por dentro.</span>
+                </div>
+                <div class="price">R$ 19,00</div>
+              </div>
+              <div class="menu-item" role="listitem">
+                <div>
+                  <strong>Frappé (variações)</strong>
+                  <span>Baunilha, chocolate ou caramelo (gelo).</span>
+                </div>
+                <div class="price">R$ 20,00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="valores">
+      <div class="container">
+        <div class="section-title">
+          <h2>Valores &amp; promoções</h2>
+          <p>Transparente e sem surpresa</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">💛</div>
+            <h3>Combo Café + Doce</h3>
+            <p>
+              Escolha um café (a partir de R$ 7,00) e ganhe 10% no doce.
+            </p>
+          </div>
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">📦</div>
+            <h3>Leve para casa</h3>
+            <p>
+              Embalagem caprichada para você aproveitar no conforto.
+            </p>
+          </div>
+          <div class="card">
+            <div aria-hidden="true" style="font-size:22px;">⏳</div>
+            <h3>Horário da manhã</h3>
+            <p>
+              Até 11h: Americano + pão de queijo com condição especial.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="banner">
+            <div class="banner-inner">
+              <div>
+                <h3>Clima de cafeteria: seu café na medida certa</h3>
+                <p>
+                  Peça pelo balcão ou para retirada. Se preferir, adapte seu pedido: sem lactose, extra espuma ou sem canela.
+                </p>
+              </div>
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="#contato">Pedir agora</a>
+                <a class="btn" href="#local">Ver localização</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="local">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nosso local</h2>
+          <p>Fácil de chegar</p>
+        </div>
+
+        <div class="footer-grid">
+          <div class="card" style="padding:18px;">
+            <h3 style="margin-top:0;">Cafeteria Local</h3>
+            <p style="margin-top:8px;">Endereço e horários exemplificativos (edite como quiser).</p>
+
+            <div class="contact">
+              <div class="field">
+                <strong>📍 Endereço</strong>
+                <span>Av. Principal, 123 — Centro</span>
+              </div>
+              <div class="field">
+                <strong>🕒 Horário</strong>
+                <span>Todos os dias • 08h–19h</span>
+              </div>
+              <div class="field">
+                <strong>📞 Contato</strong>
+                <span>(00) 1234-5678</span>
+              </div>
+              <div class="field">
+                <strong>🚗 Retirada</strong>
+                <span>Disponível no balcão</span>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+            <p class="credits">Dica: substitua as imagens por arquivos locais, se desejar. As fotos atuais usam URLs do Unsplash.</p>
+          </div>
+
+          <div class="map-img" aria-label="Imagem de localização">
+            <img
+              src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1200&q=80"
+              alt="Vista urbana para representar a localização" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-title">
+          <h2>Faça seu pedido</h2>
+          <p>Rápido, simples e gostoso</p>
+        </div>
+
+        <div class="card" style="padding:18px;">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items:start;">
+            <div>
+              <h3 style="margin-top:0;">Formulário (exemplo)</h3>
+              <p style="margin-top:8px;">Este formulário é visual. Para funcionar, conecte a um back-end ou use um serviço de formulários.</p>
+
+              <form id="pedido-form" style="margin-top:12px; display:grid; gap:10px;">
+                <label>
+                  <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Nome</div>
+                  <input id="pedido-nome" required placeholder="Seu nome" style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none;" />
+                </label>
+
+                <label>
+                  <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Telefone</div>
+                  <input id="pedido-telefone" required placeholder="(00) 99999-9999" style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none;" />
+                </label>
+
+                <label>
+                  <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Pedido</div>
+                  <select id="pedido-item" style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none;" required>
+                    <option value="">Selecione…</option>
+                    <option value="capuccino">Capuccino (R$ 12,00)</option>
+                    <option value="espresso">Espresso (R$ 7,00)</option>
+                    <option value="americano">Americano (R$ 9,00)</option>
+                    <option value="pao-de-queijo">Pão de queijo (R$ 18,00)</option>
+                    <option value="brownie">Brownie com calda (R$ 19,00)</option>
+                  </select>
+                </label>
+
+                <label>
+                  <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Retirada</div>
+                  <select id="pedido-retirada" style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none;" required>
+                    <option value="balcao">No balcão</option>
+                    <option value="retirada">Retirada</option>
+                    <option value="entrega">Entrega (taxa fixa)</option>
+                  </select>
+                </label>
+
+                <label>
+                  <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Observações</div>
+                  <textarea id="pedido-obs" placeholder="Ex.: sem lactose, sem canela, extra espuma…" rows="4" style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none; resize:vertical;"></textarea>
+                </label>
+
+                <div class="card" style="padding:14px; border-radius:18px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10);">
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <div>
+                      <div style="color:var(--muted); font-weight:700; font-size:13px; margin-bottom:6px;">Total estimado</div>
+                      <div id="pedido-total" style="font-size:22px; font-weight:900; color: var(--brand2);">R$ 0,00</div>
+                      <div id="pedido-taxas" style="color:var(--muted); font-weight:700; font-size:12.5px; margin-top:2px;">Taxas: —</div>
+                    </div>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                      <button class="btn" id="pedido-limpar" type="button">Limpar</button>
+                      <button class="btn btn-primary" type="submit" style="justify-content:center;">Enviar pedido</button>
+                    </div>
+                  </div>
+                  <div id="pedido-erro" style="display:none; margin-top:10px; color:#ffcf7a; font-weight:800; font-size:13px;"></div>
+                </div>
+              </form>
+
+              <div class="card" id="pedido-resumo" style="margin-top:14px; padding:14px; border-radius:18px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10); display:none;">
+                <h3 style="margin:0 0 8px; font-size:16px;">Resumo do seu pedido</h3>
+                <div style="color:var(--muted); font-weight:700; font-size:13px;">Confirme seus dados antes de retirar.</div>
+                <div style="margin-top:10px; display:grid; gap:8px;">
+                  <div><strong style="color:var(--text);">Cliente:</strong> <span id="res-nome"></span></div>
+                  <div><strong style="color:var(--text);">Telefone:</strong> <span id="res-tel"></span></div>
+                  <div><strong style="color:var(--text);">Item:</strong> <span id="res-item"></span></div>
+                  <div><strong style="color:var(--text);">Retirada:</strong> <span id="res-retirada"></span></div>
+                  <div><strong style="color:var(--text);">Observações:</strong> <span id="res-obs"></span></div>
+                  <div><strong style="color:var(--text);">Total:</strong> <span id="res-total" style="color:var(--brand2); font-weight:900; font-size:16px;"></span></div>
+                </div>
+                <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                  <button class="btn" type="button" id="pedido-ver-salvos">Ver pedidos salvos</button>
+                  <button class="btn" type="button" id="pedido-novo">Novo pedido</button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin-top:0;">Sugestões de combos</h3>
+              <div class="menu-table" style="margin-top:12px;">
+                <div class="menu-item">
+                  <div>
+                    <strong>Combo 1</strong>
+                    <span>Americano + pão de queijo</span>
+                  </div>
+                  <div class="price">a partir de R$ 27,00</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <strong>Combo 2</strong>
+                    <span>Cappuccino + brownie</span>
+                  </div>
+                  <div class="price">a partir de R$ 31,00</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <strong>Combo 3</strong>
+                    <span>Chocolate quente + torta</span>
+                  </div>
+                  <div class="price">a partir de R$ 30,00</div>
+                </div>
+              </div>
+
+              <div class="banner" style="margin-top:14px;">
+                <div class="banner-inner">
+                  <div>
+                    <h3 style="font-size:20px;">Pagamento e retirada</h3>
+                    <p>Pagamos com cartão e PIX. Retirada no balcão.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="hr"></div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:16px;">
+          <div style="font-weight:800; color:var(--text);">© <span id="year"></span> Cafeteria Local</div>
+          <div style="font-size:13px;">Feito com carinho • Layout responsivo • Fundo com estilo</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Destacar link do menu conforme o usuário rola a página
+    const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+    const sections = links
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => {
+        const target = a.getAttribute('href');
+        if (target === '#' + id) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible && visible.target && visible.target.id) {
+        setActive(visible.target.id);
+      }
+    }, { threshold: [0.2, 0.35, 0.5, 0.7] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // ===== Pedido funcional (frontend) =====
+    const ITEM_DB = {
+      capuccino: { label: 'Capuccino', price: 12.00 },
+      espresso: { label: 'Espresso', price: 7.00 },
+      americano: { label: 'Americano', price: 9.00 },
+      'pao-de-queijo': { label: 'Pão de queijo', price: 18.00 },
+      brownie: { label: 'Brownie com calda', price: 19.00 },
+    };
+
+    const RETIRADA_DB = {
+      balcao: { label: 'No balcão', fee: 0.00 },
+      retirada: { label: 'Retirada', fee: 0.00 },
+      entrega: { label: 'Entrega (taxa fixa)', fee: 6.50 }
+    };
+
+    const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    const LS_KEY = 'cafeteria_local_pedidos_v1';
+
+    const $ = (id) => document.getElementById(id);
+
+    const form = $('pedido-form');
+    const nomeEl = $('pedido-nome');
+    const telEl = $('pedido-telefone');
+    const itemEl = $('pedido-item');
+    const retiradaEl = $('pedido-retirada');
+    const obsEl = $('pedido-obs');
+
+    const totalEl = $('pedido-total');
+    const taxasEl = $('pedido-taxas');
+    const erroEl = $('pedido-erro');
+
+    const resumoEl = $('pedido-resumo');
+    const resNome = $('res-nome');
+    const resTel = $('res-tel');
+    const resItem = $('res-item');
+    const resRetirada = $('res-retirada');
+    const resObs = $('res-obs');
+    const resTotal = $('res-total');
+
+    const btnLimpar = $('pedido-limpar');
+    const btnVerSalvos = $('pedido-ver-salvos');
+    const btnNovo = $('pedido-novo');
+
+    const calcTotal = () => {
+      const itemKey = itemEl.value;
+      const item = ITEM_DB[itemKey];
+      if (!item) return { total: 0, item: null, taxa: null };
+
+      const retiradaKey = retiradaEl.value;
+      const retirada = RETIRADA_DB[retiradaKey];
+
+      const taxa = retirada ? retirada.fee : 0;
+      const total = item.price + taxa;
+      return { total, item, taxa, retirada };
+    };
+
+    const syncUI = () => {
+      erroEl.style.display = 'none';
+
+      const { total, item, taxa, retirada } = calcTotal();
+      if (!item) {
+        totalEl.textContent = fmt.format(0);
+        taxasEl.textContent = 'Taxas: —';
+        return;
+      }
+
+      totalEl.textContent = fmt.format(total);
+      taxasEl.textContent = 'Taxas: ' + (taxa && taxa > 0 ? fmt.format(taxa) : '—');
+
+      // Atualiza resumo em tempo real (se estiver aberto)
+      if (resumoEl.style.display !== 'none') {
+        resNome.textContent = nomeEl.value || '—';
+        resTel.textContent = telEl.value || '—';
+        resItem.textContent = item.label;
+        resRetirada.textContent = retirada ? retirada.label : '—';
+        resObs.textContent = (obsEl.value || '').trim() ? obsEl.value.trim() : '—';
+        resTotal.textContent = fmt.format(total);
+      }
+    };
+
+    ['input', 'change'].forEach(evt => {
+      form.addEventListener(evt, syncUI, { passive: true });
+    });
+
+    const loadPedidos = () => {
+      try {
+        const raw = localStorage.getItem(LS_KEY);
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr : [];
+      } catch {
+        return [];
+      }
+    };
+
+    const savePedido = (pedido) => {
+      const prev = loadPedidos();
+      prev.unshift(pedido);
+      localStorage.setItem(LS_KEY, JSON.stringify(prev));
+    };
+
+    const showResumo = (pedido, total) => {
+      resNome.textContent = pedido.nome;
+      resTel.textContent = pedido.telefone;
+      resItem.textContent = pedido.itemLabel;
+      resRetirada.textContent = pedido.retiradaLabel;
+      resObs.textContent = pedido.observacoes || '—';
+      resTotal.textContent = fmt.format(total);
+      resumoEl.style.display = 'block';
+      resumoEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    const formatPedidosHTML = (arr) => {
+      if (!arr.length) {
+        return `<div style="color:var(--muted); font-weight:700;">Nenhum pedido salvo ainda.</div>`;
+      }
+
+      return `
+        <div style="display:grid; gap:10px;">
+          ${arr.slice(0, 6).map((p, idx) => `
+            <div style="padding:12px; border-radius:14px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10);">
+              <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                <div style="font-weight:900;">#${arr.length - idx} — ${p.itemLabel}</div>
+                <div style="color:var(--brand2); font-weight:900;">${fmt.format(p.total)}</div>
+              </div>
+              <div style="margin-top:6px; color:var(--muted); font-weight:700; font-size:13px;">
+                ${p.nome} • ${p.telefone}<br/>
+                ${p.retiradaLabel} • ${new Date(p.createdAt).toLocaleString('pt-BR')}
+              </div>
+              ${p.observacoes ? `<div style="margin-top:8px; color:var(--text); font-weight:700; font-size:13px;">Obs: ${p.observacoes}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    };
+
+    btnLimpar?.addEventListener('click', () => {
+      form.reset();
+      // restaura selects obrigatórios (reset deixa value no placeholder às vezes)
+      itemEl.value = '';
+      retiradaEl.value = 'balcao';
+      erroEl.style.display = 'none';
+      resumoEl.style.display = 'none';
+      totalEl.textContent = fmt.format(0);
+      taxasEl.textContent = 'Taxas: —';
+    });
+
+    btnVerSalvos?.addEventListener('click', () => {
+      const arr = loadPedidos();
+      const html = formatPedidosHTML(arr);
+      SwalLikeRender(html);
+    });
+
+    // mini modal sem dependência (simples)
+    const SwalLikeRender = (innerHTML) => {
+      let modal = document.getElementById('pedido-salvos-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'pedido-salvos-modal';
+        modal.style.position = 'fixed';
+        modal.style.inset = '0';
+        modal.style.background = 'rgba(0,0,0,.55)';
+        modal.style.display = 'grid';
+        modal.style.placeItems = 'center';
+        modal.style.zIndex = '9999';
+        modal.innerHTML = `
+          <div style="width:min(820px,92vw); border-radius:18px; background:rgba(17,24,38,.92); border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 70px rgba(0,0,0,.6); padding:16px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-family: Playfair Display, Georgia, serif; font-size:20px; font-weight:900;">Pedidos salvos</div>
+                <div style="color:var(--muted); font-weight:700; font-size:13px; margin-top:2px;">Armazenados no navegador (localStorage)</div>
+              </div>
+              <button class="btn" id="pedido-salvos-fechar" type="button" style="background:rgba(255,255,255,.06);">Fechar</button>
+            </div>
+            <div id="pedido-salvos-body" style="margin-top:12px; max-height: 60vh; overflow:auto; padding-right:4px;">
+              ${innerHTML}
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <button class="btn" id="pedido-salvos-limpar" type="button">Limpar todos</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.querySelector('#pedido-salvos-fechar').addEventListener('click', () => {
+          modal.style.display = 'none';
+        });
+
+        modal.querySelector('#pedido-salvos-limpar').addEventListener('click', () => {
+          localStorage.removeItem(LS_KEY);
+          modal.querySelector('#pedido-salvos-body').innerHTML = formatPedidosHTML([]);
+        });
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.style.display = 'none';
+        });
+      }
+
+      modal.querySelector('#pedido-salvos-body').innerHTML = innerHTML;
+      modal.style.display = 'grid';
+    };
+
+    btnNovo?.addEventListener('click', () => {
+      resumoEl.style.display = 'none';
+      nomeEl.focus();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nome = (nomeEl.value || '').trim();
+      const telefone = (telEl.value || '').trim();
+      const itemKey = itemEl.value;
+      const item = ITEM_DB[itemKey];
+      const retiradaKey = retiradaEl.value;
+      const retirada = RETIRADA_DB[retiradaKey];
+      const obs = (obsEl.value || '').trim();
+
+      if (!nome || !telefone || !item) {
+        erroEl.textContent = 'Preencha nome, telefone e selecione o item.';
+        erroEl.style.display = 'block';
+        return;
+      }
+
+      const { total } = calcTotal();
+
+      const pedido = {
+        nome,
+        telefone,
+        itemKey,
+        itemLabel: item.label,
+        retiradaKey,
+        retiradaLabel: retirada ? retirada.label : '—',
+        observacoes: obs || '',
+        total,
+        createdAt: Date.now(),
+      };
+
+      savePedido(pedido);
+      showResumo(pedido, total);
+
+      // mantém os dados no formulário para o usuário confirmar, mas limpa observações opcionais
+      // (deixe como está para UX melhor)
+    });
+
+    // Inicializa UI
+    retiradaEl.value = retiradaEl.value || 'balcao';
+    syncUI();
+  </script>
+</body>
+</html>
+
+
+

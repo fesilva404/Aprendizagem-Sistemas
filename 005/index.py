@@ -1,0 +1,5 @@
+nome = str(input("Digite seu nome: "))
+idade = int(input("Digite sua idade: "))
+altura = str(input("Digite sua altura: "))
+print("nome:", nome ," idade:",idade  ," Altura:",altura ) 
+print(f"olá, meu nome é {nome} e eu tenho {idade} anos e {altura} de altura!")

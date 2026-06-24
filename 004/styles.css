@@ -1,0 +1,117 @@
+/*
+  styles.css
+  (Extrai estilos comuns e adiciona interações/animações)
+*/
+
+:root{
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Acessibilidade */
+:focus-visible{
+  outline: 3px solid rgba(255,207,122,.8);
+  outline-offset: 3px;
+}
+
+/* Scroll suave */
+html{
+  scroll-behavior:smooth;
+}
+
+/* Animações suaves */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hover/press para botões e links */
+.btn{
+  will-change: transform;
+}
+
+.btn, nav a, .cta{
+  transition: transform .18s var(--ease), background .18s var(--ease), color .18s var(--ease), box-shadow .18s var(--ease);
+}
+
+.btn:hover, nav a:hover{
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0px) scale(.99);
+}
+
+/* Cards com elevação */
+.card{
+  transition: transform .22s var(--ease), border-color .22s var(--ease), background .22s var(--ease);
+}
+
+.card:hover{
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.07);
+}
+
+/* Destaques suaves no hero */
+.hero-left{
+  animation: floatIn 600ms var(--ease) both;
+}
+
+.hero-right{
+  animation: floatIn 700ms var(--ease) both;
+}
+
+@keyframes floatIn{
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Efeito de “brilho” em destaque (banner) */
+.banner{
+  position: relative;
+}
+
+.banner::after{
+  content:"";
+  position:absolute;
+  inset:-40% -40% auto -40%;
+  height: 120px;
+  background: linear-gradient(90deg, transparent, rgba(255,207,122,.18), transparent);
+  transform: translateX(-40%);
+  opacity:.0;
+  pointer-events:none;
+  transition: opacity .25s var(--ease);
+}
+
+.banner:hover::after{
+  opacity: 1;
+  animation: shimmer 900ms var(--ease) both;
+}
+
+@keyframes shimmer{
+  from{ transform: translateX(-60%); }
+  to{ transform: translateX(60%); }
+}
+
+/* Parallax leve (sem ser pesado) */
+[data-parallax]{
+  transform: translateY(0);
+  will-change: transform;
+}
+
+/* Barra de navegação: um pouco de efeito no scroll */
+header{
+  transition: background .25s var(--ease), border-color .25s var(--ease);
+}
+
+/* Links ativos: destaque quando clicados/rolagem */
+.nav a.active{
+  color: var(--text) !important;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
