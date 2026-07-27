@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Camiseta Algodão Orgânico -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Corpo -->
+    <path d="M50 55 L35 80 L40 85 L50 80 L50 210 L150 210 L150 80 L160 85 L165 80 L150 55 L130 40 L115 50 L100 45 L85 50 L70 40 Z" fill="#e8e6e0" stroke="#1a1a1a"/>
+    <!-- Gola redonda -->
+    <path d="M70 40 L80 28 L100 35 L120 28 L130 40" fill="#f0efe8" stroke="#1a1a1a"/>
+    <!-- Etiqueta decorativa -->
+    <rect x="85" y="100" width="30" height="18" rx="2" fill="none" stroke="#999" stroke-width="1.5"/>
+    <text x="100" y="114" font-family="sans-serif" font-size="8" fill="#999" text-anchor="middle" font-weight="600">100%</text>
+    <!-- Detalhe costura -->
+    <line x1="100" y1="135" x2="100" y2="175" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+</svg>
+

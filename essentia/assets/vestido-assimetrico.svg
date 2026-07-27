@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Vestido Assimétrico -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Decote assimétrico -->
+    <path d="M60 40 L85 30 L100 55 L115 30 L140 40" fill="#1a1a1a" stroke="#1a1a1a"/>
+    <!-- Corpo do vestido (assimétrico) -->
+    <path d="M60 40 L50 210 L150 195 L155 140 L140 40" fill="#0d0d0d" stroke="#1a1a1a"/>
+    <!-- Recorte lateral -->
+    <path d="M50 150 L70 140 L50 130" fill="#2d2d2d" stroke="#555" stroke-width="1.5"/>
+    <!-- Detalhe zíper -->
+    <line x1="102" y1="55" x2="105" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="2,3"/>
+  </g>
+</svg>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Camisa Oversized -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Corpo oversized -->
+    <path d="M45 50 L30 85 L35 90 L45 85 L45 210 L155 210 L155 85 L165 90 L170 85 L155 50 L135 35 L120 48 L100 42 L80 48 L65 35 Z" fill="#5a5a5a" stroke="#1a1a1a"/>
+    <!-- Gola camisa -->
+    <path d="M65 35 L85 20 L100 38 L115 20 L135 35" fill="#6a6a6a" stroke="#1a1a1a"/>
+    <!-- Colarinho -->
+    <path d="M85 20 L70 15 L65 35" fill="none"/>
+    <path d="M115 20 L130 15 L135 35" fill="none"/>
+    <!-- Botões -->
+    <circle cx="100" cy="60" r="2.5" fill="#1a1a1a"/>
+    <circle cx="100" cy="80" r="2.5" fill="#1a1a1a"/>
+    <circle cx="100" cy="100" r="2.5" fill="#1a1a1a"/>
+    <!-- Bolso -->
+    <rect x="55" y="115" width="25" height="28" rx="2" fill="none"/>
+    <!-- Mangas largas -->
+    <path d="M45 85 L25 110 L20 115 L30 120 L40 95" fill="none"/>
+    <path d="M155 85 L175 110 L180 115 L170 120 L160 95" fill="none"/>
+  </g>
+</svg>
+

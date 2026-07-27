@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Finalize seu pedido na Essentia — Moda autoral e inclusiva." />
+    <title>Checkout — Essentia</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="essentia-premium.css" />
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container header__inner">
+            <a href="index.html" class="header__logo" aria-label="Voltar para Essentia">
+                <span class="header__logo-text">Essentia</span>
+            </a>
+            <span class="checkout__step-indicator">Checkout</span>
+            <a href="index.html" class="btn btn--outline" style="padding: 0.4rem 1rem; font-size: var(--text-xs);">Voltar à loja</a>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout__layout">
+                <!-- Formulário -->
+                <div class="checkout__form-section">
+                    <h1 class="checkout__title">Finalizar pedido</h1>
+
+                    <!-- Etapas -->
+                    <div class="checkout__steps">
+                        <div class="checkout__step checkout__step--active" data-step="1">
+                            <span class="checkout__step-number">1</span>
+                            <span class="checkout__step-label">Endereço</span>
+                        </div>
+                        <div class="checkout__step" data-step="2">
+                            <span class="checkout__step-number">2</span>
+                            <span class="checkout__step-label">Frete</span>
+                        </div>
+                        <div class="checkout__step" data-step="3">
+                            <span class="checkout__step-number">3</span>
+                            <span class="checkout__step-label">Pagamento</span>
+                        </div>
+                        <div class="checkout__step" data-step="4">
+                            <span class="checkout__step-number">4</span>
+                            <span class="checkout__step-label">Confirmação</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Endereço -->
+                    <div class="checkout__step-content" id="checkoutStep1">
+                        <h2>Endereço de entrega</h2>
+                        <form id="addressForm" class="checkout__form">
+                            <div class="checkout__form-grid">
+                                <div class="checkout__field">
+                                    <label for="addrName">Nome completo *</label>
+                                    <input type="text" id="addrName" required placeholder="Seu nome" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrPhone">Telefone *</label>
+                                    <input type="tel" id="addrPhone" required placeholder="(11) 99999-8888" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrCep">CEP *</label>
+                                    <input type="text" id="addrCep" required placeholder="00000-000" maxlength="9" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrStreet">Rua *</label>
+                                    <input type="text" id="addrStreet" required placeholder="Nome da rua" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrNumber">Número *</label>
+                                    <input type="text" id="addrNumber" required placeholder="123" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrComplement">Complemento</label>
+                                    <input type="text" id="addrComplement" placeholder="Apto, Bloco..." />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrDistrict">Bairro *</label>
+                                    <input type="text" id="addrDistrict" required placeholder="Seu bairro" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrCity">Cidade *</label>
+                                    <input type="text" id="addrCity" required placeholder="Sua cidade" />
+                                </div>
+                                <div class="checkout__field">
+                                    <label for="addrState">Estado *</label>
+                                    <select id="addrState" required>
+                                        <option value="">Selecione</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn--primary checkout__next-btn" data-next="2">Continuar para Frete</button>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Frete -->
+                    <div class="checkout__step-content" id="checkoutStep2" style="display: none;">
+                        <h2>Opções de frete</h2>
+                        <div class="shipping__options" id="shippingOptions">
+                            <label class="shipping__option">
+                                <input type="radio" name="shipping" value="express" checked />
+                                <div class="shipping__option-info">
+                                    <span class="shipping__option-name">Expresso (1-3 dias úteis)</span>
+                                    <span class="shipping__option-price">R$ 29,90</span>
+                                </div>
+                            </label>
+                            <label class="shipping__option">
+                                <input type="radio" name="shipping" value="standard" />
+                                <div class="shipping__option-info">
+                                    <span class="shipping__option-name">Padrão (5-10 dias úteis)</span>
+                                    <span class="shipping__option-price">R$ 15,90</span>
+                                </div>
+                            </label>
+                            <label class="shipping__option shipping__option--free">
+                                <input type="radio" name="shipping" value="free" />
+                                <div class="shipping__option-info">
+                                    <span class="shipping__option-name">Frete Grátis (10-15 dias úteis)</span>
+                                    <span class="shipping__option-price">Grátis</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="checkout__nav-btns">
+                            <button type="button" class="btn btn--outline checkout__prev-btn" data-prev="1">Voltar</button>
+                            <button type="button" class="btn btn--primary checkout__next-btn" data-next="3">Continuar para Pagamento</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Pagamento -->
+                    <div class="checkout__step-content" id="checkoutStep3" style="display: none;">
+                        <h2>Forma de pagamento</h2>
+                        <div class="payment__options">
+                            <label class="payment__option">
+                                <input type="radio" name="payment" value="credit" checked />
+                                <div class="payment__option-info">
+                                    <span class="payment__option-name">Cartão de crédito</span>
+                                    <span class="payment__option-desc">Parcele em até 12x</span>
+                                </div>
+                            </label>
+                            <div class="payment__card-form" id="creditCardForm">
+                                <div class="checkout__form-grid">
+                                    <div class="checkout__field checkout__field--full">
+                                        <label for="cardNumber">Número do cartão</label>
+                                        <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" />
+                                    </div>
+                                    <div class="checkout__field">
+                                        <label for="cardName">Nome no cartão</label>
+                                        <input type="text" id="cardName" placeholder="Como está no cartão" />
+                                    </div>
+                                    <div class="checkout__field">
+                                        <label for="cardExpiry">Validade</label>
+                                        <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5" />
+                                    </div>
+                                    <div class="checkout__field">
+                                        <label for="cardCvv">CVV</label>
+                                        <input type="text" id="cardCvv" placeholder="123" maxlength="4" />
+                                    </div>
+                                    <div class="checkout__field checkout__field--full">
+                                        <label for="cardInstallments">Parcelas</label>
+                                        <select id="cardInstallments">
+                                            <option value="1">1x de R$ 0,00 (sem juros)</option>
+                                            <option value="2">2x de R$ 0,00 (sem juros)</option>
+                                            <option value="3">3x de R$ 0,00 (sem juros)</option>
+                                            <option value="6">6x de R$ 0,00 (sem juros)</option>
+                                            <option value="12">12x de R$ 0,00 (sem juros)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="payment__option">
+                                <input type="radio" name="payment" value="pix" />
+                                <div class="payment__option-info">
+                                    <span class="payment__option-name">Pix</span>
+                                    <span class="payment__option-desc">Pagamento instantâneo — 5% de desconto</span>
+                                </div>
+                            </label>
+
+                            <label class="payment__option">
+                                <input type="radio" name="payment" value="boleto" />
+                                <div class="payment__option-info">
+                                    <span class="payment__option-name">Boleto bancário</span>
+                                    <span class="payment__option-desc">Vence em 3 dias úteis</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="checkout__nav-btns">
+                            <button type="button" class="btn btn--outline checkout__prev-btn" data-prev="2">Voltar</button>
+                            <button type="button" class="btn btn--primary checkout__next-btn" data-next="4">Revisar pedido</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirmação -->
+                    <div class="checkout__step-content" id="checkoutStep4" style="display: none;">
+                        <h2>Confirme seu pedido</h2>
+                        <div class="checkout__review" id="checkoutReview"></div>
+                        <div class="checkout__nav-btns">
+                            <button type="button" class="btn btn--outline checkout__prev-btn" data-prev="3">Voltar</button>
+                            <button type="button" class="btn btn--primary checkout__finish-btn" id="checkoutFinishBtn">
+                                Finalizar compra
+                            </button>
+                        </div>
+                        <div class="checkout__msg" id="checkoutMsg" role="status"></div>
+                    </div>
+                </div>
+
+                <!-- Resumo -->
+                <aside class="checkout__summary">
+                    <h3 class="checkout__summary-title">Resumo do pedido</h3>
+                    <div class="checkout__summary-items" id="checkoutSummaryItems"></div>
+                    <div class="checkout__summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal">R$ 0,00</span>
+                    </div>
+                    <div class="checkout__summary-row" id="checkoutDiscountRow" style="display: none;">
+                        <span>Desconto</span>
+                        <span id="checkoutDiscount">- R$ 0,00</span>
+                    </div>
+                    <div class="checkout__summary-row">
+                        <span>Frete</span>
+                        <span id="checkoutShipping">R$ 0,00</span>
+                    </div>
+                    <div class="checkout__summary-row checkout__summary-total">
+                        <span>Total</span>
+                        <span id="checkoutTotal">R$ 0,00</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 Essentia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+

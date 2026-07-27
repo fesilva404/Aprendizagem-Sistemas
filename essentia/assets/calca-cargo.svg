@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Calça Cargo Baggy -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cintura -->
+    <path d="M35 35 L100 25 L165 35 L165 45 L100 55 L35 45 Z" fill="#4a4a4a" stroke="#1a1a1a"/>
+    <!-- Perna esquerda (baggy) -->
+    <path d="M35 45 L30 220 L70 225 L100 55" fill="#4a4a4a" stroke="#1a1a1a"/>
+    <!-- Perna direita (baggy) -->
+    <path d="M100 55 L130 225 L170 220 L165 45" fill="#3d3d3d" stroke="#1a1a1a"/>
+    <!-- Bolso cargo esquerdo -->
+    <rect x="38" y="95" width="28" height="30" rx="3" fill="none"/>
+    <line x1="38" y1="105" x2="66" y2="105" stroke="#666" stroke-width="1"/>
+    <!-- Bolso cargo direito -->
+    <rect x="134" y="95" width="28" height="30" rx="3" fill="none"/>
+    <line x1="134" y1="105" x2="162" y2="105" stroke="#666" stroke-width="1"/>
+    <!-- Cinto -->
+    <line x1="35" y1="45" x2="165" y2="45" stroke="#666" stroke-width="1.5"/>
+    <!-- Bolso traseiro direito -->
+    <rect x="130" y="65" width="22" height="18" rx="3" fill="none"/>
+  </g>
+</svg>
+

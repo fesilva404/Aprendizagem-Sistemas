@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Blusa Cropped Linho -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Corpo cropped -->
+    <path d="M55 55 L40 80 L45 85 L55 80 L55 155 L145 155 L145 80 L155 85 L160 80 L145 55 L130 42 L118 48 L100 44 L82 48 L70 42 Z" fill="#c8c0b8" stroke="#1a1a1a"/>
+    <!-- Gola V -->
+    <path d="M70 42 L100 65 L130 42" fill="#b8b0a8" stroke="#1a1a1a"/>
+    <!-- Amarração frontal -->
+    <path d="M95 80 L95 100 L105 100 L105 80" fill="none"/>
+    <path d="M95 100 L88 108" stroke="#999" stroke-width="2"/>
+    <path d="M105 100 L112 108" stroke="#999" stroke-width="2"/>
+    <!-- Barra inferior (cropped) -->
+    <line x1="55" y1="155" x2="145" y2="155" stroke="#b8b0a8" stroke-width="3"/>
+  </g>
+</svg>
+

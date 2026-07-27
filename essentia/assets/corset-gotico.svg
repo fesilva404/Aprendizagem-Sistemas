@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <!-- Corset Gótico -->
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Corset corpo -->
+    <path d="M55 35 L40 65 L35 120 L35 180 L100 220 L165 180 L165 120 L160 65 L145 35" fill="#0d0d0d" stroke="#1a1a1a"/>
+    <!-- Decote -->
+    <path d="M55 35 L100 55 L145 35" fill="#1a1a1a" stroke="#1a1a1a"/>
+    <!-- Cadarço frontal -->
+    <line x1="96" y1="55" x2="96" y2="215" stroke="#555" stroke-width="1.5" stroke-dasharray="3,5"/>
+    <line x1="104" y1="55" x2="104" y2="215" stroke="#555" stroke-width="1.5" stroke-dasharray="3,5"/>
+    <!-- Ilhós -->
+    <circle cx="96" cy="75" r="3" fill="#666" stroke="#888"/>
+    <circle cx="104" cy="75" r="3" fill="#666" stroke="#888"/>
+    <circle cx="96" cy="100" r="3" fill="#666" stroke="#888"/>
+    <circle cx="104" cy="100" r="3" fill="#666" stroke="#888"/>
+    <circle cx="96" cy="125" r="3" fill="#666" stroke="#888"/>
+    <circle cx="104" cy="125" r="3" fill="#666" stroke="#888"/>
+    <circle cx="96" cy="150" r="3" fill="#666" stroke="#888"/>
+    <circle cx="104" cy="150" r="3" fill="#666" stroke="#888"/>
+    <circle cx="96" cy="175" r="3" fill="#666" stroke="#888"/>
+    <circle cx="104" cy="175" r="3" fill="#666" stroke="#888"/>
+    <!-- Barbatanas decorativas -->
+    <line x1="55" y1="45" x2="55" y2="175" stroke="#555" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="145" y1="45" x2="145" y2="175" stroke="#555" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Detalhe zíper lateral -->
+    <line x1="152" y1="65" x2="152" y2="170" stroke="#666" stroke-width="1.5" stroke-dasharray="1,2"/>
+  </g>
+</svg>
+
